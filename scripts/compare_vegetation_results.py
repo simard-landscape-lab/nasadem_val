@@ -102,7 +102,7 @@ for path_num, path in enumerate(h5_paths):
 
 
 
-outpath = '/Volumes/ThunderBay/Sites/global/validation_results/figures_and_comparisons/veg_results_paper_plots_2022_02_23/'
+outpath = os.path.join(root_path, 'results')
 if not os.path.isdir(outpath):
     os.makedirs(outpath)
 

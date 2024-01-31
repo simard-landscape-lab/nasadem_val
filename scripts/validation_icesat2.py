@@ -1368,16 +1368,12 @@ for dataset_str in dataset_batch:
     for i, continent in enumerate(continents):
         print('Calculating tile-level statistics of {} vs. ICESat-2 for {}...'.format(dataset_str, continent))
 
-        if running_on_pahoehoe:
             if dataset_str == 'NASADEM_srtm':
                 nasadem_type = 'srtm'
-                file_pattern = '/mnt/phh-r0b/nasadem/daac/'+continent+'/hgt_srtmOnly/*.hgts.zip'
+                file_pattern = os.path.join(root_path, '/nasadem/daac/'+continent+'/hgt_srtmOnly/*.hgts.zip')
             else:
                 nasadem_type = 'merged'
-                file_pattern = '/mnt/phh-r0b/nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip'
-        else:
-            nasadem_type = 'merged'
-            file_pattern = '/Volumes/ThunderBay/Sites/global/NASADEM/'+continent+'/*.hgt.zip'
+                file_pattern = os.path.join(root_path, '/nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip')
 
         # Files to store tile-level statistics:
         tile_clat_file = os.path.join(outpath, continent+'_'+icesat_str+'_tile_clat.npy')
