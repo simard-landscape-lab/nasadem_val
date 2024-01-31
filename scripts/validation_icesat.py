@@ -1498,13 +1498,13 @@ for dataset_str in dataset_batch:
             print('Comparing {} DEM vs. ICESat for {}...'.format(dataset_str, continent))
             if dataset_str == 'NASADEM_merged':
                 nasadem_type = 'merged'
-                file_pattern = '/mnt/phh-r0b/nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip'
+                file_pattern = os.path.join(root_path, '/nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip')
             elif dataset_str == 'NASADEM_srtm':
                 nasadem_type = 'srtm'
-                file_pattern = '/mnt/phh-r0b/nasadem/daac/'+continent+'/hgt_srtmOnly/*.hgts.zip'
+                file_pattern = os.path.join(root_path, '/nasadem/daac/'+continent+'/hgt_srtmOnly/*.hgts.zip')
             else:
                 nasadem_type = 'merged'
-                file_pattern = '/mnt/phh-r0b/nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip'
+                file_pattern = os.path.join(root_path, '/nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip')
             
             outfile = os.path.join(outpath, continent+'_'+os.path.splitext(os.path.basename(icesat_file))[0]+'.npy')
             if not os.path.isfile(outfile) or overwrite_npy_files:

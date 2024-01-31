@@ -65,15 +65,13 @@ figure_str = 'run1'
 
 
 # File locations for data:
-gedi_path = '/mnt/phh-r0c/users/cmarshak/gedi_nasadem_l2a_aggregated/'
-srtmv3_path = '/mnt/phh-r0c/users/cmarshak/srtm_v03/'
-tdx_path = '/mnt/phh-r0c/users/cmarshak/tdx_90m_reproj/'
-cop_path = '/mnt/phh-r0c/users/cmarshak/tdx_30m_boto/tdx_glo30/'
+gedi_path = os.path.join(root_path, 'gedi_nasadem_l2a_aggregated')
+srtmv3_path = os.path.join(root_path, 'srtm_v03')
+tdx_path = os.path.join(root_path, 'tdx_90m_reproj')
+cop_path = os.path.join(root_path, 'tdx_30m_boto/tdx_glo30')
 
-egm96_gtx = '/mnt/phh-r0c/users/mdenbina/egm1996/egm1996.gtx' # EGM96 Geoid GTX File
-egm08_gtx = '/mnt/phh-r0c/users/mdenbina/egm2008/egm2008.gtx' # EGM2008 Geoid GTX File
-
-glims_shp_file = '/u/phh-r0c/users/mdenbina/glims/glims_polygons_buffered.shp'
+egm96_gtx = os.path.join(root_path, 'egm1996/egm1996.gtx')# EGM96 Geoid GTX File
+egm08_gtx = os.path.join(root_path, 'egm2008/egm2008.gtx') # EGM08 Geoid GTX File
 
 
 ##########################
@@ -1298,7 +1296,7 @@ for dataset_str in dataset_batch:
             file_pattern = os.path.join(root_path, '/nasadem/daac/'+continent+'/hgt_srtmOnly/*.hgts.zip')
         else:
             nasadem_type = 'merged'
-            file_pattern = os.path.join(root_path, 'nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip')
+            file_pattern = os.path.join(root_path, '/nasadem/daac/'+continent+'/hgt_merge/*.hgt.zip')
         
         # Files to store tile-level statistics:
         tile_clat_file = os.path.join(outpath, continent+'_'+mode_str+'_tile_clat.npy')
